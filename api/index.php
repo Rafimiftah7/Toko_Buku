@@ -1,14 +1,19 @@
 <?php
 
-/**
- * Forward Vercel requests to normal Laravel public/index.php
- */
+use Illuminate\Http\Request;
 
-// Vercel only allows writing to /tmp
+define('LARAVEL_START', microtime(true));
+
+// Register the Composer autoloader...
 require __DIR__ . '/../vendor/autoload.php';
 
+// Vercel only allows writing to /tmp
 $_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'] ?: __DIR__ . '/../public';
-$app = require __DIR__.'/../bootstrap/app.php';
+
+// Bootstrap Laravel
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+// Move storage to /tmp
 $app->useStoragePath($_ENV['APP_STORAGE'] ?? '/tmp/storage');
 
 // Ensure storage directories exist
@@ -19,10 +24,6 @@ foreach (['/framework/views', '/framework/cache/data', '/framework/sessions', '/
     }
 }
 
-$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
-$response = $kernel->handle(
-    $request = Illuminate\Http\Request::capture()
-);
-$response->send();
-$kernel->terminate($request, $response);
+// Handle the request
+$app->handleRequest(Request::capture());
 
