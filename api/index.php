@@ -5,6 +5,8 @@
  */
 
 // Vercel only allows writing to /tmp
+require __DIR__ . '/../vendor/autoload.php';
+
 $_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'] ?: __DIR__ . '/../public';
 $app = require __DIR__.'/../bootstrap/app.php';
 $app->useStoragePath($_ENV['APP_STORAGE'] ?? '/tmp/storage');
