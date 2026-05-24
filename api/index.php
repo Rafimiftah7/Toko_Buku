@@ -1,9 +1,6 @@
 <?php
 
-// === MODE OFFLINE SEMENTARA ===
-// Hapus tiga baris di bawah ini jika ingin website bisa diakses kembali
-echo "<h1>Website sedang dimatikan untuk sementara waktu.</h1>";
-exit;
+
 
 use Illuminate\Http\Request;
 
