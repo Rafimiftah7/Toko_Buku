@@ -6,10 +6,6 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
-// === MODE OFFLINE SEMENTARA ===
-// Hapus baris di bawah ini jika ingin website bisa diakses kembali
-abort(503, 'Website sedang dimatikan untuk sementara waktu.');
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes — Toko Buku Harmony (UTS Laravel MVC)
