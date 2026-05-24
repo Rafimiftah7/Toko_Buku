@@ -311,7 +311,7 @@ Controller: BukuController@index
                                                 ✏️ Edit
                                             </a>
                                             <form action="{{ route('buku.destroy', $item->id) }}" method="POST" class="flex-1"
-                                                  onsubmit="return confirm('Yakin hapus buku {{ addslashes($item->judul) }}?')">
+                                                  onsubmit="if(!confirm('Yakin hapus buku {{ addslashes($item->judul) }}?')){return false;} sessionStorage.setItem('scrollY', window.scrollY); return true;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
@@ -608,6 +608,15 @@ Controller: BukuController@index
     }
 
     window.addEventListener('load', () => { updateCart(); });
+
+    // Restore scroll position setelah hapus buku
+    window.addEventListener('load', () => {
+        const savedY = sessionStorage.getItem('scrollY');
+        if (savedY !== null) {
+            window.scrollTo({ top: parseInt(savedY), behavior: 'instant' });
+            sessionStorage.removeItem('scrollY');
+        }
+    });
 </script>
 @endpush
 @endsection

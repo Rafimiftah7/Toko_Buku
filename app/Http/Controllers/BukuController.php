@@ -88,7 +88,7 @@ class BukuController extends Controller
 
         Buku::create($validated);
 
-        return redirect()->route('admin.dashboard')
+        return redirect()->back()
                          ->with('success', 'Buku berhasil ditambahkan!');
     }
 
@@ -143,7 +143,9 @@ class BukuController extends Controller
 
         $buku->update($validated);
 
-        return redirect()->route('admin.dashboard')
+        $slug = $buku->fresh()->kategori->slug ?? 'all';
+
+        return redirect()->route('home', ['kategori' => $slug])
                          ->with('success', 'Buku berhasil diperbarui!');
     }
 
@@ -156,7 +158,7 @@ class BukuController extends Controller
         $judul = $buku->judul;
         $buku->delete();
 
-        return redirect()->route('admin.dashboard')
+        return redirect()->back()
                          ->with('success', "Buku \"{$judul}\" berhasil dihapus!");
     }
 

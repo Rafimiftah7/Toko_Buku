@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Admin Panel — Toko Buku Harmony')
+@section('title', 'Admin Panel — Toko Mari Baca')
 
 @section('content')
 <div class="min-h-screen py-6 px-4 md:px-8 max-w-7xl mx-auto space-y-6">
@@ -11,14 +11,14 @@
             <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#EA6A47] to-[#f28e2b] flex items-center justify-center text-white text-xl shadow-md font-bold">⚙️</div>
             <div>
                 <div class="flex items-center gap-1.5">
-                    <h1 class="text-sm font-extrabold text-[#2D2621] heading-font">Panel Admin — Toko Buku Harmony</h1>
+                    <h1 class="text-sm font-extrabold text-[#2D2621] heading-font">Panel Admin — Toko Buku Mari Baca</h1>
                     <span class="text-[9px] font-black uppercase bg-red-100 text-red-600 px-2 py-0.5 rounded-full">ADMIN</span>
                 </div>
                 <p class="text-[10px] text-[#8C7A6B]">Halo, {{ Auth::user()->name }} — Kelola data buku & kategori</p>
             </div>
         </div>
         <div class="flex items-center gap-2">
-            <a href="{{ route('home') }}" class="px-3 py-2 bg-[#FAF6F0] hover:bg-white border border-[#EBE3D5] text-[#6D5F53] text-xs font-semibold rounded-xl transition">🏠 Storefront</a>
+            <a href="{{ route('home') }}" class="px-3 py-2 bg-[#FAF6F0] hover:bg-white border border-[#EBE3D5] text-[#6D5F53] text-xs font-semibold rounded-xl transition">🏠 halaman utama</a>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="px-3 py-2 bg-red-50 hover:bg-red-100 border border-red-200 text-red-600 text-xs font-bold rounded-xl transition">Keluar</button>
@@ -57,7 +57,7 @@
     {{-- CRUD BUKU --}}
     <div class="bg-white rounded-2xl border border-[#EBE3D5] shadow-sm overflow-hidden">
         <div class="flex items-center justify-between p-5 border-b border-[#F5EFE6]">
-            <h2 class="text-sm font-extrabold text-[#2D2621] heading-font">📚 Manajemen Data Buku (CRUD)</h2>
+            <h2 class="text-sm font-extrabold text-[#2D2621] heading-font">📚 Manajemen Data Buku</h2>
             <a href="{{ route('buku.create') }}"
                class="flex items-center gap-1.5 px-4 py-2 bg-[#EA6A47] hover:bg-[#D55B39] text-white font-bold text-xs rounded-xl transition shadow-sm">
                 + Tambah Buku Baru
@@ -146,7 +146,7 @@
     {{-- CRUD KATEGORI --}}
     <div class="bg-white rounded-2xl border border-[#EBE3D5] shadow-sm overflow-hidden">
         <div class="flex items-center justify-between p-5 border-b border-[#F5EFE6]">
-            <h2 class="text-sm font-extrabold text-[#2D2621] heading-font">🏷️ Manajemen Kategori Buku (Relasi Tabel)</h2>
+            <h2 class="text-sm font-extrabold text-[#2D2621] heading-font">🏷️ Manajemen Kategori Buku</h2>
             <a href="{{ route('kategori.create') }}"
                class="flex items-center gap-1.5 px-4 py-2 bg-[#EA6A47] hover:bg-[#D55B39] text-white font-bold text-xs rounded-xl transition shadow-sm">
                 + Buat Kategori Baru
